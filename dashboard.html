@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - VoteEdu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>VoteEdu</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#polls" class="nav-item">
+                    <i class="fas fa-poll"></i>
+                    <span>Active Polls</span>
+                </a>
+                <a href="#history" class="nav-item">
+                    <i class="fas fa-history"></i>
+                    <span>Voting History</span>
+                </a>
+                <a href="#profile" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="php/logout.php" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-dashboard">
+            <header class="dashboard-header">
+                <div class="header-content">
+                    <h1>Welcome back, <span id="studentName">Student</span>!</h1>
+                    <p>Your voice matters. Make it count.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-outline" onclick="refreshDashboard()">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-vote-yea"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalVotes">0</h3>
+                            <p>Total Votes Cast</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-poll"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="activePolls">0</h3>
+                            <p>Active Polls</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="pendingVotes">0</h3>
+                            <p>Pending Votes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>95%</h3>
+                            <p>Participation Rate</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <section class="polls-section">
+                        <div class="section-header">
+                            <h2>Active Polls</h2>
+                            <button class="btn btn-outline btn-sm" onclick="loadPolls()">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
+                        <div class="polls-container" id="pollsContainer">
+                            <!-- Polls will be loaded dynamically -->
+                        </div>
+                    </section>
+
+                    <section class="recent-activity">
+                        <div class="section-header">
+                            <h2>Recent Activity</h2>
+                        </div>
+                        <div class="activity-list" id="activityList">
+                            <!-- Activity items will be loaded dynamically -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Voting Modal -->
+    <div class="modal" id="votingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Poll Title</h3>
+                <button class="close-btn" onclick="closeVotingModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="modalDescription">Poll description</p>
+                <div class="voting-options" id="votingOptions">
+                    <!-- Options will be populated dynamically -->
+                </div>
+                <div class="comment-section">
+                    <label for="voterComment">Add a comment (optional):</label>
+                    <textarea id="voterComment" placeholder="Share your thoughts..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeVotingModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="submitVote()">
+                    <i class="fas fa-vote-yea"></i>
+                    Submit Vote
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

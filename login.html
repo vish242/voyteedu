@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - VoteEdu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-vote-yea"></i>
+                    <span>VoteEdu</span>
+                </div>
+                <h1>Student Login</h1>
+                <p>Access your voting dashboard</p>
+            </div>
+
+            <form class="auth-form" id="loginForm" action="php/login.php" method="POST">
+                <div class="form-group">
+                    <label for="student_id">Student ID</label>
+                    <div class="input-group">
+                        <i class="fas fa-id-card"></i>
+                        <input type="text" id="student_id" name="student_id" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" class="toggle-password" onclick="togglePassword()">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="remember">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#forgot" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Sign In
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="register.html">Register here</a></p>
+                <p><a href="index.html">← Back to home</a></p>
+            </div>
+        </div>
+
+        <div class="auth-visual">
+            <div class="visual-content">
+                <h2>Join the Democratic Process</h2>
+                <p>Your voice shapes the future of our educational community</p>
+                <div class="feature-highlights">
+                    <div class="highlight">
+                        <i class="fas fa-vote-yea"></i>
+                        <span>Vote on important decisions</span>
+                    </div>
+                    <div class="highlight">
+                        <i class="fas fa-comments"></i>
+                        <span>Share your opinions</span>
+                    </div>
+                    <div class="highlight">
+                        <i class="fas fa-chart-line"></i>
+                        <span>See real-time results</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
